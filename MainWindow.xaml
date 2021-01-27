@@ -1,0 +1,59 @@
+﻿<Window x:Class="Rib.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rib"
+        mc:Ignorable="d"
+        Title="Ведомость" WindowState="Maximized" Height="500" Width="1000" WindowStartupLocation="CenterScreen" >
+    <Grid>
+
+        <Menu>
+            <MenuItem Header="Инструменты" Width="89" Height="25">
+                
+                <MenuItem Header="Добавить новый объект" Click="addSubject_Click" />
+                <MenuItem Header="Открыть отчет" Click="openOrder_Click"/>
+                <MenuItem Header="Открыть все объекты" Click="openMainTable_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <DataGrid x:Name="MyGrid" CanUserAddRows="False" IsEnabled="False" Visibility="Hidden"
+                       AutoGenerateColumns="False" Margin="0,25,0,0" IsReadOnly="True">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="№" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="инв.№" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Перв.ст-ть" Binding="{Binding InitalCost}"/>
+                <DataGridTextColumn Header="Износ" Binding="{Binding Depreciation}"/>
+                <DataGridTextColumn Header="Остаточная стоимость" Binding="{Binding ResidualCost}"/>
+                <DataGridTextColumn Header="ост.срок исп-я, мес." Binding="{Binding ResidualDate}"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Group}"/>
+                <DataGridTextColumn Header="В эксплуатации" Binding="{Binding IsWorking}"/>
+                <DataGridTextColumn Header="Лицевой счет" Binding="{Binding Account}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="MyGrid2" CanUserAddRows="False" IsEnabled="False" Visibility="Hidden" 
+                       AutoGenerateColumns="False" Margin="0,25,0,0" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="№" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="инв.№" Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Перв.ст-ть" Binding="{Binding InitalCost}"/>
+                <DataGridTextColumn Header="Износ" Binding="{Binding Depreciation}"/>
+                <DataGridTextColumn Header="Месяц начала эксплуатации" Binding="{Binding MonthAdd}"/>
+                <DataGridTextColumn Header="Год начала эксплуатации" Binding="{Binding YearAdd}"/>
+                <DataGridTextColumn Header="Срок использования" Binding="{Binding UsefulTime}"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Group}"/>
+                <DataGridTextColumn Header="В эксплуатации" Binding="{Binding IsWorking}"/>
+                <DataGridTextColumn Header="Лицевой счет" Binding="{Binding Account}"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu >
+                <ContextMenu>
+                    <MenuItem Header="Модернизировать" Click="modification_Click"></MenuItem>
+                    <MenuItem Header="Обновить" Click="update_Click"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+
+    </Grid>
+</Window>
